@@ -1,16 +1,16 @@
 import { either } from 'ramda'
 import { isFiniteNumber } from './number'
 
-export function isObject<T extends Record<string, unknown>>(
+export function isDictionary<T extends Record<string, unknown>>(
   v: unknown
 ): v is T {
   return !!v && typeof v === 'object' && !Array.isArray(v)
 }
 
-export function isFilledObject<T extends Record<string, unknown>>(
+export function isFilledDictionary<T extends Record<string, unknown>>(
   v: unknown
 ): v is T {
-  return isObject(v) && !!Object.values({ ...v }).length
+  return isDictionary(v) && !!Object.values({ ...v }).length
 }
 
 export function isString(v: unknown): v is string {
