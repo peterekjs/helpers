@@ -1,4 +1,4 @@
-import { assert } from 'ts-essentials'
+import { Dictionary, assert } from 'ts-essentials'
 
 //#region Nullable Identity
 export type Nullable<T> = T | undefined | null
@@ -61,7 +61,7 @@ export function isNonNullable<T>(value: T): value is NonNullable<T> {
 //#endregion
 
 //#region Object Identity
-export function assertObject(value: unknown): asserts value is {} {
+export function assertObject(value: unknown): asserts value is Record<string | number | symbol, unknown> {
   assertNonNullable(value)
   assert(typeof value === 'object', 'Expected object type')
 }
@@ -69,7 +69,7 @@ export function ensureObject(value: unknown) {
   assertObject(value)
   return value
 }
-export function isObject(value: unknown): value is {} {
+export function isObject(value: unknown): value is Record<string | number | symbol, unknown> {
   return isNonNullable(value) && typeof value === 'object'
 }
 //#endregion
