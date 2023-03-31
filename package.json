@@ -16,47 +16,43 @@
     "type": "git",
     "url": "git+https://github.com/peterekjs/helpers.git"
   },
-  "engines": {
-    "node": ">=16.0.0"
+  "bugs": {
+    "url": "https://github.com/peterekjs/helpers/issues"
   },
+  "homepage": "https://github.com/peterekjs/helpers#readme",
+  "sideEffects": false,
+  "type": "module",
   "files": [
-    "dist/*",
-    "src/*"
+    "dist",
+    "src"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/helpers.cjs",
+  "module": "./dist/helpers.js",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.mjs"
-    }
+      "import": "./dist/helpers.js",
+      "require": "./dist/helpers.cjs"
+    },
+    "./src/*": "./src/*"
   },
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "typescript": {
-    "definition": "./dist/types/index.d.ts"
+    "definition": "./dist/index.d.ts"
   },
-  "sideEffects": false,
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build": "vite build",
+    "dev": "vite build --watch",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "ramda": "^0.28.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-typescript": "^8.3.1",
+    "@peterek/rollup-externals": "^1.0.0",
+    "@types/node": "^18.15.11",
     "@types/ramda": "^0.28.8",
-    "chokidar": "^3.5.3",
-    "rollup": "^2.70.1",
-    "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.6.3"
-  },
-  "bugs": {
-    "url": "https://github.com/peterekjs/helpers/issues"
-  },
-  "homepage": "https://github.com/peterekjs/helpers#readme"
+    "typescript": "^5.0.3",
+    "vite": "^4.2.1",
+    "vite-plugin-dts": "^2.1.0"
+  }
 }

@@ -1,31 +1,12 @@
 {
+  "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "ESNext",
+    "lib": ["ESNext", "ES2015.Iterable"],
     "module": "ESNext",
     "moduleResolution": "node",
-    "declaration": true,
-    "declarationDir": "types",
-    "declarationMap": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "isolatedModules": false,
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "useDefineForClassFields": true,
-    "emitDeclarationOnly": true,
-    "noEmitOnError": false,
     "outDir": "dist",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ]
+    "resolveJsonModule": true
   },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "./node_modules/**/*"
-  ]
+  "include": ["src"]
 }
