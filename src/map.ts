@@ -3,7 +3,7 @@ import { curry } from 'ramda'
 /**
  * Get item from Map if exists, otherwise create a new entry
  */
-export const getOrCreate = curry(
+export const obtainMapValue = curry(
   <T, K>(initFn: (k: K) => T, map: Map<K, T>, key: K) => {
     if (map.has(key)) return map.get(key)
 

@@ -1,5 +1,5 @@
 export * from './array'
 export { decToFlags, flagsToDec } from './flags'
-export { getOrCreate } from './map'
+export * from './identity'
+export { obtainMapValue } from './map'
 export * from './number'
-export * from './value'
