@@ -2,7 +2,7 @@ import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import { getExternals } from '@peterek/rollup-externals'
-import { peerDependencies } from './package.json'
+import { dependencies, peerDependencies } from './package.json'
 
 export default defineConfig({
   build: {
@@ -12,7 +12,7 @@ export default defineConfig({
       formats: ['cjs', 'es']
     },
     rollupOptions: {
-      external: getExternals(peerDependencies)
+      external: getExternals(dependencies, peerDependencies)
     },
     sourcemap: true,
     target: 'esnext',

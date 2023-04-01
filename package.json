@@ -44,6 +44,9 @@
     "dev": "vite build --watch",
     "prepublishOnly": "npm run build"
   },
+  "dependencies": {
+    "ts-essentials": "^9.3.1"
+  },
   "peerDependencies": {
     "ramda": "^0.28.0"
   },
@@ -54,8 +57,5 @@
     "typescript": "^5.0.3",
     "vite": "^4.2.1",
     "vite-plugin-dts": "^2.1.0"
-  },
-  "dependencies": {
-    "ts-essentials": "^9.3.1"
   }
 }
