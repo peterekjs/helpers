@@ -45,7 +45,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "ts-essentials": "^9.3.1"
+    "ts-essentials": "^9.3.2"
   },
   "peerDependencies": {
     "ramda": "^0.28.0"
