@@ -22,6 +22,9 @@
   "homepage": "https://github.com/peterekjs/helpers#readme",
   "sideEffects": false,
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "files": [
     "dist",
     "src"
@@ -30,10 +33,16 @@
   "module": "./dist/helpers.js",
   "exports": {
     ".": {
-      "import": "./dist/helpers.js",
-      "require": "./dist/helpers.cjs"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/helpers.cjs",
+      "default": "./dist/helpers.js"
     },
     "./src/*": "./src/*"
+  },
+  "typesVersions": {
+    ">=5": {
+      "*": ["./dist/*.d.ts"]
+    }
   },
   "types": "./dist/index.d.ts",
   "typescript": {
@@ -45,17 +54,16 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "ts-essentials": "^9.3.1"
+    "ts-essentials": "^9.4.1"
   },
   "peerDependencies": {
-    "ramda": "^0.28.0"
+    "ramda": "^0.29.1"
   },
   "devDependencies": {
-    "@peterek/rollup-externals": "^1.0.0",
-    "@types/node": "^18.15.11",
-    "@types/ramda": "^0.28.8",
-    "typescript": "^5.0.3",
-    "vite": "^4.2.1",
-    "vite-plugin-dts": "^2.1.0"
+    "@types/node": "^20.11.13",
+    "@types/ramda": "^0.29.10",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-dts": "^3.7.2"
   }
 }
