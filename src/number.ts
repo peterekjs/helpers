@@ -1,9 +1,8 @@
 import { curry } from 'ramda'
-import { assert } from 'ts-essentials'
 
 //#region Number Identity
-export function assertNumber(value: unknown): asserts value is number {
-  assert(typeof value === 'number' && !Number.isNaN(value), 'Expected number')
+export function assertNumber(value: unknown, message = 'Expected number'): asserts value is number {
+  if (!isNumber(value)) throw new TypeError(message)
 }
 export function ensureNumber(value: unknown) {
   assertNumber(value)
@@ -15,9 +14,9 @@ export function isNumber(value: unknown): value is number {
 //#endregion
 
 //#region Finite Number Identity
-export function assertFiniteNumber(value: unknown): asserts value is number {
+export function assertFiniteNumber(value: unknown, message = 'Expected finite number'): asserts value is number {
   assertNumber(value)
-  assert(Number.isFinite(value), 'Expected finite number')
+  if (!Number.isFinite(value)) throw new TypeError(message)
 }
 export function ensureFiniteNumber(value: unknown) {
   assertFiniteNumber(value)
@@ -29,9 +28,9 @@ export function isFiniteNumber(v: unknown): v is number {
 //#endregion
 
 //#region Integer Identity
-export function assertInteger(value: unknown): asserts value is number {
+export function assertInteger(value: unknown, message = 'Expected integer'): asserts value is number {
   assertNumber(value)
-  assert(Number.isInteger(value), 'Expected integer')
+  if (!Number.isInteger(value)) throw new TypeError(message)
 }
 export function ensureInteger(value: unknown) {
   assertInteger(value)
@@ -41,9 +40,9 @@ export function isInteger(v: unknown): v is number {
   return isNumber(v) && Number.isInteger(v)
 }
 
-export function assertSafeInteger(value: unknown): asserts value is number {
+export function assertSafeInteger(value: unknown, message = 'Expected safe integer'): asserts value is number {
   assertNumber(value)
-  assert(Number.isSafeInteger(value), 'Expected safe integer')
+  if (!Number.isSafeInteger(value)) throw new TypeError(message)
 }
 export function ensureSafeInteger(value: unknown) {
   assertSafeInteger(value)
@@ -55,9 +54,9 @@ export function isSafeInteger(v: unknown): v is number {
 //#endregion
 
 //#region Positive Number Identity
-export function assertPositiveNumber(value: unknown): asserts value is number {
+export function assertPositiveNumber(value: unknown, message = 'Expected number > 0'): asserts value is number {
   assertNumber(value)
-  assert(value > 0, 'Expected number > 0')
+  if (!(value > 0)) throw new TypeError(message)
 }
 export function ensurePositiveNumber(value: unknown) {
   assertPositiveNumber(value)
@@ -67,9 +66,9 @@ export function isPositiveNumber(v: unknown): v is number {
   return isNumber(v) && v > 0
 }
 
-export function assertPositiveNumberOrZero(value: unknown): asserts value is number {
+export function assertPositiveNumberOrZero(value: unknown, message = 'Expected number >= 0'): asserts value is number {
   assertNumber(value)
-  assert(value >= 0, 'Expected number >= 0')
+  if (!(value >= 0)) throw new TypeError(message)
 }
 export function ensurePositiveNumberOrZero(value: unknown) {
   assertPositiveNumberOrZero(value)
@@ -81,9 +80,9 @@ export function isPositiveNumberOrZero(v: unknown): v is number {
 //#endregion
 
 //#region Negative Number Identity
-export function assertNegativeNumber(value: unknown): asserts value is number {
+export function assertNegativeNumber(value: unknown, message = 'Expected number < 0'): asserts value is number {
   assertNumber(value)
-  assert(value < 0, 'Expected number < 0')
+  if (!(value < 0)) throw new TypeError(message)
 }
 export function ensureNegativeNumber(value: unknown) {
   assertNegativeNumber(value)
@@ -93,9 +92,9 @@ export function isNegativeNumber(v: unknown): v is number {
   return isNumber(v) && v < 0
 }
 
-export function assertNegativeNumberOrZero(value: unknown): asserts value is number {
+export function assertNegativeNumberOrZero(value: unknown, message = 'Expected number <= 0'): asserts value is number {
   assertNumber(value)
-  assert(value <= 0, 'Expected number <= 0')
+  if (!(value <= 0)) throw new TypeError(message)
 }
 export function ensureNegativeNumberOrZero(value: unknown) {
   assertNegativeNumberOrZero(value)

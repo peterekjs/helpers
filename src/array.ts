@@ -1,9 +1,6 @@
-import { assert } from 'ts-essentials'
-import type { NonEmptyArray } from 'ts-essentials'
-
 //#region Array Identity
-export function assertArray<T>(value: unknown): asserts value is T[] {
-  assert(Array.isArray(value), 'Expected array')
+export function assertArray<T>(value: unknown, message = 'Expected array'): asserts value is T[] {
+  if (!Array.isArray(value)) throw new TypeError(message)
 }
 export function ensureArray<T>(value: unknown) {
   assertArray<T>(value)
@@ -15,15 +12,17 @@ export function isArray<T>(value: unknown): value is T[] {
 //#endregion
 
 //#region Filled Array Identity
-export function assertFilledArray<T>(value: unknown): asserts value is NonEmptyArray<T> {
+export type FilledArray<Type> = [Type, ...Type[]]
+
+export function assertFilledArray<T>(value: unknown, message = 'Expected array to have at least one item'): asserts value is FilledArray<T> {
   assertArray(value)
-  assert(value.length, 'Expected array to have at least one item')
+  if (!value.length) throw new TypeError(message)
 }
 export function ensureFilledArray<T>(value: unknown) {
   assertFilledArray<T>(value)
   return value
 }
-export function isFilledArray<T>(value: unknown): value is NonEmptyArray<T> {
+export function isFilledArray<T>(value: unknown): value is FilledArray<T> {
   return Array.isArray(value) && !!value.length
 }
 //#endregion

@@ -58,9 +58,6 @@
     "test": "vitest run",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "ts-essentials": "^9.4.1"
-  },
   "peerDependencies": {
     "ramda": "^0.29.1"
   },

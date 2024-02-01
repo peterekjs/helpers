@@ -11,7 +11,7 @@ export default defineConfig({
       formats: ['cjs', 'es']
     },
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)]
+      external: [...Object.keys(pkg.peerDependencies)]
     },
     sourcemap: true,
     target: 'esnext',
