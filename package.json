@@ -41,8 +41,8 @@
   },
   "typesVersions": {
     ">=5": {
-      "*": [
-        "./dist/*.d.ts"
+      "index": [
+        "./dist/index.d.ts"
       ]
     }
   },
