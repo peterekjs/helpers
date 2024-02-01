@@ -4,8 +4,9 @@
 name: Publish npm
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -32,7 +33,6 @@ jobs:
           node-version-file: .nvmrc
           cache: 'npm'
           registry-url: https://registry.npmjs.org/
-      - run: npm install -g npm
       - run: npm ci
       - run: npx changelogithub
         continue-on-error: true
